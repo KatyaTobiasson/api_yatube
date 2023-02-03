@@ -90,19 +90,17 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated', 
-    ],
+        'rest_framework.permissions.IsAuthenticated',],
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-    ]
-} 
+        'rest_framework.authentication.TokenAuthentication',],
+                  }
 
 SIMPLE_JWT = {
     # Устанавливаем срок жизни токена
    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
    'AUTH_HEADER_TYPES': ('Bearer',),
-} 
+}
 
 # Internationalization
 
