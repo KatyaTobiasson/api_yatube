@@ -56,4 +56,3 @@ class CommentViewSet(viewsets.ModelViewSet):
         if instance.author != self.request.user:
             raise PermissionDenied('Вы не являететсь автором поста')
         instance.delete()
-
