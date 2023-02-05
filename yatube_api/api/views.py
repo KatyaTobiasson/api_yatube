@@ -20,11 +20,6 @@ class PostViewSet(viewsets.ModelViewSet):
     def perform_update(self, serializer):
         super().perform_update(serializer)
 
-    def perform_destroy(self, instance):
-        if instance.author != self.request.user:
-            raise PermissionDenied('Вы не являететсь автором поста')
-        super(PostViewSet, self).perform_destroy(instance)
-
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
@@ -43,8 +38,3 @@ class CommentViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         post = get_object_or_404(Post, pk=self.kwargs.get('post_id'))
         serializer.save(author=self.request.user, post=post)
-
-    def perform_destroy(self, instance):
-        if instance.author != self.request.user:
-            raise PermissionDenied('Вы не являететсь автором поста')
-        instance.delete()
