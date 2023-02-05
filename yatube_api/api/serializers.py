@@ -9,7 +9,7 @@ class PostSerializer(serializers.ModelSerializer):
         default=serializers.CurrentUserDefault())
 
     class Meta:
-        fields = ('id', 'author', 'text', 'image', 'pub_date', 'group',)
+        fields = '__all__'
         read_only_fields = ('author', 'group',)
         model = Post
 
@@ -17,7 +17,7 @@ class PostSerializer(serializers.ModelSerializer):
 class GroupSerializer(serializers.ModelSerializer):
 
     class Meta:
-        fields = ('id', 'title', 'slug', 'description',)
+        fields = '__all__'
         model = Group
 
 
@@ -27,6 +27,6 @@ class CommentSerializer(serializers.ModelSerializer):
         default=serializers.CurrentUserDefault())
 
     class Meta:
-        fields = ('id', 'author', 'post', 'text', 'created',)
+        fields = '__all__'
         model = Comment
         read_only_fields = ('author', 'post',)
